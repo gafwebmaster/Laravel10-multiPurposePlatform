@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// Admin all routes
+Route::controller(AdminController::class)->group(function(){
+    Route::get('admin/logout', 'destroy')->name('admin.logout');
+    Route::get('admin/profile', 'Profile')->name('admin.profile');
+    Route::get('edit/profile', 'EditProfile')->name('edit.profile');
+    Route::post('store/profile', 'StoreProfile')->name('store.profile');
+    Route::get('change/password', 'ChangePassword')->name('change.password');      
+    Route::post('update/password', 'UpdatePassword')->name('update.password');
 });
 
 Route::get('/dashboard', function () {
