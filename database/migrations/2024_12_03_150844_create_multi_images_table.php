@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('home_slides', function (Blueprint $table) {
+        Schema::create('multi_images', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('short_title')->nullable();
-            $table->string('home_slide', 1000)->nullable();
-            $table->string('video_url')->nullable();
+            $table->string('multi_image')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('home_slides');
+        Schema::dropIfExists('multi_images');
     }
 };

@@ -8,35 +8,36 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="{{ route('store.profile') }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('update.slider') }}" enctype="multipart/form-data">
                                 @csrf
-                                <h4 class="card-title">Edit profile page</h4>
+                                <input type="hidden" name="id" value="{{ $homeslide->id }}">
+                                <h4 class="card-title">Home slide page</h4>
                                 <div class="row mb-3">
-                                    <label for="name" class="col-sm-2 col-form-label">Name</label>
+                                    <label for="name" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
-                                        <input name="name" class="form-control" type="text"
-                                            value="{{ $editData->name }}" id="name">
+                                        <input name="title" class="form-control" type="text"
+                                            value="{{ $homeslide->title }}" id="title">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="name" class="col-sm-2 col-form-label">Username</label>
+                                    <label for="short_title" class="col-sm-2 col-form-label">Short title</label>
                                     <div class="col-sm-10">
-                                        <input name="username" class="form-control" type="text"
-                                            value="{{ $editData->username }}" id="username">
+                                        <input name="short_title" class="form-control" type="text"
+                                            value="{{ $homeslide->short_title }}" id="short_title">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                    <label for="video_url" class="col-sm-2 col-form-label">Video url</label>
                                     <div class="col-sm-10">
-                                        <input name="email" class="form-control" type="text"
-                                            value="{{ $editData->email }}" id="email">
+                                        <input name="video_url" class="form-control" type="text"
+                                            value="{{ $homeslide->video_url }}" id="video_url">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="image" class="col-sm-2 col-form-label">Profile image</label>
+                                    <label for="home_slide" class="col-sm-2 col-form-label">Home slide</label>
                                     <div class="col-sm-10">
-                                        <input name="profile_image" class="form-control" type="file" id="image">
+                                        <input name="home_slide" class="form-control" type="file" id="home_slide">
                                     </div>
                                 </div>
 
@@ -44,7 +45,7 @@
                                     <label for="showImage" class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
                                         <img id="showImage" class="rounded avatar-lg"
-                                            src="{{ (!empty($editData->profile_image))? url('upload/admin_images/'.$editData->profile_image):url('upload/no_image.jpg') }}" >
+                                            src="{{ (!empty($homeslide->home_slide))? url($homeslide->home_slide):url('upload/no_image.jpg') }}" >
                                     </div>
                                 </div>
                                 <input type="submit" class="btn btn-info" value="Update Profile">
